@@ -6,3 +6,23 @@
   box-sizing: border-box;
   font-family: "Overpass";
 }
+
+/* Root variables */
+:root {
+  --primary: hsl(25, 97%, 53%);
+  --heading: hsl(0, 0%, 100%);
+  --text: hsl(217, 12%, 63%);
+  --bg-1: hsl(216, 12%, 8%);
+  --bg-2: hsl(216, 12%, 54%);
+  --bg-3: hsl(213, 19%, 18%);
+  --baseFontSize: 15px;
+}
+
+/* main section */
+main {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--bg-1);
+  padding: var(--baseFontSize);
+}
