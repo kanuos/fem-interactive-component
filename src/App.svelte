@@ -1,0 +1,3 @@
+<main>
+  App.svelte
+</main>
