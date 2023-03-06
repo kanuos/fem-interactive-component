@@ -1,8 +1,17 @@
 <!-- Feedback -->
-<script>
+<script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import FeedbackSelector from "./FeedbackSelector.svelte";
   import Wrapper from "./Wrapper.svelte";
-  function handleSubmitForm() {}
+
+  // props
+  export let feedbackScore: number;
+
+  // dispatch events when the form is submitted
+  const dispatch = createEventDispatcher();
+  function handleSubmitForm() {
+    dispatch("submit-form");
+  }
 </script>
 
 <Wrapper>
@@ -19,11 +28,11 @@
       <ul>
         {#each [1, 2, 3, 4, 5] as value (value)}
           <li>
-            <FeedbackSelector {value} />
+            <FeedbackSelector {value} bind:feedbackScore on:get-feedback />
           </li>
         {/each}
       </ul>
-      <button type="submit">submit</button>
+      <button disabled={isNaN(feedbackScore)} type="submit">submit</button>
     </form>
   </article>
 </Wrapper>
@@ -99,13 +108,17 @@
     background-color: var(--primary);
   }
 
-  button[type="submit"]:hover {
+  button[type="submit"]:not(:disabled):hover {
     color: var(--primary);
     background-color: var(--heading);
     filter: drop-shadow(0 1px var(--baseFontSize) rgba(0 0 0 /0.05));
   }
 
-  button[type="submit"]:focus {
+  button[type="submit"]:not(:disabled):focus {
     scale: 0.98;
+  }
+  button[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 </style>
