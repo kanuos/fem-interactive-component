@@ -1,9 +1,7 @@
 <script lang="ts">
-  import Wrapper from "./lib/components/Wrapper.svelte";
+  import Feedback from "./lib/components/Feedback.svelte";
 </script>
 
 <main>
-  <Wrapper>
-    <section>App.svelte</section>
-  </Wrapper>
+  <Feedback />
 </main>
